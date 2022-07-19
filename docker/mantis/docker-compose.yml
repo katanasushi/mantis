@@ -29,14 +29,17 @@ services:
       - mantis-net
     restart: always
 
-  mantis:
+mantis:
     image: mantis:latest
     ports:
       - 8546:8546
       - 13798:13798
       - 9095:9095
     networks:
-      - mantis-net
+      - mantis-net  
+    volumes:
+      - $HOME/.mantis:/home/demiourgos728/.mantis/
+    command: -Dconfig.file=./conf/sagano.conf
     restart: always
 
   grafana:
